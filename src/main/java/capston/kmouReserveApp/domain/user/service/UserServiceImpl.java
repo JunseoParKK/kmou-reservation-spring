@@ -40,9 +40,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @Transactional
-    public UserInfo getUserByUuid(String uuid) {
-        User findUser = userRepository.findUserByUuid(uuid)
+    @Transactional(readOnly = true)
+    public UserInfo getByUuid(String uuid) {
+        User findUser = userRepository.findByUuid(uuid)
                 .orElseThrow(()->new EntityNotFoundException());
         log.info("getByUuid findUser: {}",findUser);
 

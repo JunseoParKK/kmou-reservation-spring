@@ -39,7 +39,7 @@ public class UserController {
             @RequestBody UserRequest.UuidRequest uuidRequest
             ){
         String uuid = uuidRequest.getUuid();
-        UserInfo userInfo = userService.getUserByUuid(uuid);
+        UserInfo userInfo = userService.getByUuid(uuid);
         log.info("userInfo: {}",userInfo);
 
         return new ResponseEntity<>(userInfo,HttpStatus.OK);

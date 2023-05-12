@@ -6,5 +6,5 @@ import capston.kmouReserveApp.domain.user.dto.UserInfo;
 public interface UserService {
     UserInfo create(SignUpRequest signUpRequest);
     UserInfo getUser(Long userId);
-    UserInfo getUserByUuid(String uuid);
+    UserInfo getByUuid(String uuid);
 }
