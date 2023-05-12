@@ -38,4 +38,14 @@ public class UserServiceImpl implements UserService{
 
         return userMapper.mapToDto(findUser);
     }
+
+    @Override
+    @Transactional
+    public UserInfo getUserByUuid(String uuid) {
+        User findUser = userRepository.findUserByUuid(uuid)
+                .orElseThrow(()->new EntityNotFoundException());
+        log.info("getByUuid findUser: {}",findUser);
+
+        return userMapper.mapToDto(findUser);
+    }
 }

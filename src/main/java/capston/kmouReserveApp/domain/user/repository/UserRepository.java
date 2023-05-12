@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -14,4 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select u from User u where u.id =: userId")
     List<Long> findUserByIds(@Param("userId") Long userId);
+
+    @Query("select u from User u where u.uuid =: uuid")
+    Optional<User> findUserByUuid(@Param("uuid") String uuid);
 }
