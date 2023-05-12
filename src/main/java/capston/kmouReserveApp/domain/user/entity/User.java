@@ -19,10 +19,12 @@ import java.util.UUID;
 @Table(name = "users")
 public class User extends BaseTimeEntity {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private UUID id;
+    private Long id;
+
+    @Column(nullable = false,unique = true)
+    private String uuid;
 
     private String name;
 
@@ -32,7 +34,7 @@ public class User extends BaseTimeEntity {
     @Column(length = 20, nullable = false)
     private String password;
 
-    @Column(name = "phone_num")
+    @Column(name = "phone_num",unique = true)
     private String phoneNum;
 
     @JsonIgnore
@@ -40,8 +42,9 @@ public class User extends BaseTimeEntity {
     private List<Reservation> reservations = new ArrayList<>();
 
     @Builder
-    public User(UUID id, String name, String email, String password, String phoneNum) {
+    public User(Long id, String uuid, String name, String email, String password, String phoneNum) {
         this.id = id;
+        this.uuid = uuid;
         this.name = name;
         this.email = email;
         this.password = password;

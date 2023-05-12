@@ -9,7 +9,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 public class UserInfo {
-    private UUID id;
+    private Long id;
+    private String uuid;
     private String name;
     private String phoneNum;
 
@@ -17,8 +18,9 @@ public class UserInfo {
     private String password;
 
     @Builder
-    public UserInfo(UUID id, String name, String phoneNum, String email, String password) {
+    public UserInfo(Long id,String uuid, String name, String phoneNum, String email, String password) {
         this.id = id;
+        this.uuid = uuid;
         this.name = name;
         this.phoneNum = phoneNum;
         this.email = email;
