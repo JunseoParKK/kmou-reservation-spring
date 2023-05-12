@@ -2,6 +2,7 @@ package capston.kmouReserveApp.domain.user.entity;
 
 import capston.kmouReserveApp.domain.BaseTimeEntity;
 import capston.kmouReserveApp.domain.reservation.entity.Reservation;
+import capston.kmouReserveApp.domain.user.dto.SignUpRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -49,5 +50,15 @@ public class User extends BaseTimeEntity {
         this.email = email;
         this.password = password;
         this.phoneNum = phoneNum;
+    }
+
+    public static User of(SignUpRequest signUpRequest){
+        return User.builder()
+                .name(signUpRequest.getName())
+                .email(signUpRequest.getEmail())
+                .password(signUpRequest.getPassword())
+                .phoneNum(signUpRequest.getPhoneNum())
+                .uuid(signUpRequest.getUuid())
+                .build();
     }
 }
