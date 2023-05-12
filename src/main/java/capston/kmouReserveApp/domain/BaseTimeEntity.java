@@ -1,4 +1,4 @@
-package capston.kmouReserveApp;
+package capston.kmouReserveApp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
