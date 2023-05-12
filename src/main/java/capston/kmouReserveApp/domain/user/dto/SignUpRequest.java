@@ -1,5 +1,6 @@
 package capston.kmouReserveApp.domain.user.dto;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ public class SignUpRequest {
     private String phoneNum;
     private String uuid;
 
+    @Builder
     public SignUpRequest(String name, String email, String password, String phoneNum,String uuid) {
         this.name = name;
         this.email = email;

@@ -3,7 +3,10 @@ package capston.kmouReserveApp.domain.user.mapper;
 import capston.kmouReserveApp.domain.user.dto.SignUpResponse;
 import capston.kmouReserveApp.domain.user.dto.UserInfo;
 import capston.kmouReserveApp.domain.user.entity.User;
+import lombok.Data;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserMapper {
     public static UserInfo mapToDto(User savedUser){
         return UserInfo.builder()
