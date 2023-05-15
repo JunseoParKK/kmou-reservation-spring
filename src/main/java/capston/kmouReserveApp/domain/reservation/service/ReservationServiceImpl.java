@@ -126,6 +126,7 @@ public class ReservationServiceImpl implements ReservationService{
                 .build();
     }
 
+    @Transactional
     @Override
     public ReservationDetails getByRoomAndReservationToken(Long roomId, String reservationToken) {
         Reservation reservation = reservationRepository.findByRoomAndToken(roomId,reservationToken)
