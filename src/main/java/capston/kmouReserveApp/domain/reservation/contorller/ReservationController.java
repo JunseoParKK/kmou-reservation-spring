@@ -89,4 +89,19 @@ public class ReservationController {
         log.info("reservation updateByUuid, roomId: {}, reservationToken: {}",roomId,reservationToken);
         return reservationService.updateByToken(roomId,reservationToken,updateReservation);
     }
+
+    /*
+     * 예약 삭제
+     */
+    @DeleteMapping("/reservation/{reservationToken}")
+    public ResponseEntity<String>deleteReservation(
+            @PathVariable("reservationToken") String reservationToken,
+            @RequestBody UserRequest.UuidRequest userRequest
+    ){
+        String uuid = userRequest.getUuid();
+        log.info("reservation deleteById, reservationToken: {}",reservationToken);
+
+        reservationService.deleteByToken(uuid,reservationToken);
+        return new ResponseEntity<>("a reservation successfully deleted!",HttpStatus.OK);
+    }
 }
