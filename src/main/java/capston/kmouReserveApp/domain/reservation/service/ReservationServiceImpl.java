@@ -165,4 +165,19 @@ public class ReservationServiceImpl implements ReservationService{
                 .map(ReservationDetails::mapToDto)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    @Override
+    public String updateByToken(Long roomId, String reservationToken, ReservationRequest.UpdateReservation updateReservation) {
+        Reservation findReservation = reservationRepository.findByTokenLock(reservationToken)
+                .orElseThrow(()->{
+                    log.info("reservation 대상이 없습니다. reservationToken: {}",reservationToken);
+                    throw new ApiException(ErrorCode.NOT_FOUND_ENTITY);
+                });
+        validateUpdateRequest(roomId,updateReservation);
+        findReservation.update(updateReservation);
+
+        String updatedReservationToken = findReservation.getReservationToken();
+        return updatedReservationToken;
+    }
 }

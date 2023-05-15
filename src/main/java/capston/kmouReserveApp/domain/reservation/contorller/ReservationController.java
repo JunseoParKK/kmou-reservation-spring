@@ -83,9 +83,9 @@ public class ReservationController {
     public String updateReservation(
             @PathVariable("roomId") Long roomId,
             @PathVariable("reservationToken") String reservationToken,
-            @RequestBody ReservationRequest.updateReservation updateReservation
+            @RequestBody ReservationRequest.UpdateReservation updateReservation
     ){
-        String uuid = updateReservation.getUserUuid();
+        String uuid = updateReservation.getUuid();
         log.info("reservation updateByUuid, roomId: {}, reservationToken: {}",roomId,reservationToken);
         return reservationService.updateByToken(roomId,reservationToken,updateReservation);
     }
