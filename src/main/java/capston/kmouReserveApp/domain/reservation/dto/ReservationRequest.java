@@ -47,15 +47,15 @@ public class ReservationRequest {
         private String startTime;
         private String endTime;
         private String purpose;
-        private int memberNUm;
+        private int memberNum;
 
         @Builder
-       public UpdateReservation(String uuid, String startTime, String endTime, String purpose, int memberNUm) {
+       public UpdateReservation(String uuid, String startTime, String endTime, String purpose, int memberNum) {
            this.uuid = uuid;
            this.startTime = startTime;
            this.endTime = endTime;
            this.purpose = purpose;
-           this.memberNUm = memberNUm;
+           this.memberNum = memberNum;
        }
 
        public Reservation mapToEntity(ValidateFindByIdDto validateFindByIdDto){

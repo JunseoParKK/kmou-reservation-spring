@@ -180,4 +180,9 @@ public class ReservationServiceImpl implements ReservationService{
         String updatedReservationToken = findReservation.getReservationToken();
         return updatedReservationToken;
     }
+
+    private void validateUpdateRequest(Long roomId,ReservationRequest.UpdateReservation updateReservation){
+        validateDiffTime(updateReservation.getStartTime(),updateReservation.getEndTime());
+        validateFindById(updateReservation.getUuid(),roomId);
+    }
 }

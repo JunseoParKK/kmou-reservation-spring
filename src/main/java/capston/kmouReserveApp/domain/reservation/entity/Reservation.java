@@ -2,7 +2,9 @@ package capston.kmouReserveApp.domain.reservation.entity;
 
 import antlr.Token;
 import capston.kmouReserveApp.domain.BaseTimeEntity;
+import capston.kmouReserveApp.domain.reservation.dto.ReservationRequest;
 import capston.kmouReserveApp.domain.user.entity.User;
+import capston.kmouReserveApp.utils.TimeParsingUtils;
 import capston.kmouReserveApp.utils.TokenGenerator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
@@ -58,5 +60,12 @@ public class Reservation extends BaseTimeEntity {
         this.room = room;
         this.purpose = purpose;
         this.memberNum = memberNum;
+    }
+
+    public void update(ReservationRequest.UpdateReservation updateReservation) {
+        this.startTime= TimeParsingUtils.formatterLocalDateTime(updateReservation.getStartTime());
+        this.endTime=TimeParsingUtils.formatterLocalDateTime(updateReservation.getEndTime());
+        this.purpose= updateReservation.getPurpose();
+        this.memberNum= updateReservation.getMemberNum();
     }
 }
