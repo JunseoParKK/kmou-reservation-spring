@@ -35,8 +35,8 @@ public class ReservationServiceImpl implements ReservationService{
 
     @Transactional
     @Override
-    public ReservationDetails register(String uuid, Long roomId, ReservationRequest.RegisterReservation registerReservation) {
-       Reservation reservation = validateCreateRequest(uuid,roomId,registerReservation);
+    public ReservationDetails register(Long roomId, ReservationRequest.RegisterReservation registerReservation) {
+       Reservation reservation = validateCreateRequest(roomId,registerReservation);
        Reservation saveReservation = reservationRepository.save(reservation);
        ReservationDetails reservationDetails = ReservationDetails.mapToDto(saveReservation);
        log.info("register reservationDetails: {}",reservationDetails);
@@ -45,7 +45,6 @@ public class ReservationServiceImpl implements ReservationService{
     }
 
     private Reservation validateCreateRequest(
-            String uuid,
             Long roomId,
             ReservationRequest.RegisterReservation registerReservation
     ){
@@ -82,9 +81,9 @@ public class ReservationServiceImpl implements ReservationService{
         log.info("registerReservation: {}",reservation);
 
         // 중복 reservation 체크
-        reservationRepository.findByTokenLock(reservation.getReservationToken()).ifPresent(r->{
+        reservationRepository.findByTokenLock(reservation.getReservationToken()).ifPresent( r-> {
             log.error("Same reservationToken is existing, can't make the reservation");
-            throw new ApiException(ErrorCode.DUPLICATED_ENTITY,"ReservationToken",reservation.getReservationToken());
+            throw new ApiException(ErrorCode.DUPLICATED_ENTITY,"reservationToken", reservation.getReservationToken());
         });
 
         return reservation;
