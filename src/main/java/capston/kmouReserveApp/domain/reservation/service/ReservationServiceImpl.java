@@ -60,7 +60,7 @@ public class ReservationServiceImpl implements ReservationService{
         // 예약 인원 체크
         Room findRoom = roomRepository.findById(roomId)
                 .orElseThrow(()->{
-                    log.error("room 대상이 없습니다. roomId: {}",roomId);
+                    log.error("room 대상이 없습니다. roomId: {}", roomId);
                     throw new ApiException(ErrorCode.NOT_FOUND_ENTITY);
                 });
         if(registerReservation.getMemberNum() > findRoom.getMaxNum() || registerReservation.getMemberNum() <= 0){
