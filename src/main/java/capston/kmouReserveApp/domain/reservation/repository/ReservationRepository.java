@@ -24,4 +24,10 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select r from Reservation r where r.reservationToken = :rToken")
     Optional<Reservation> findByTokenLock(@Param("rToken") String rToken);
+
+    @Query("select r from Reservation r left join fetch r.room where r.room.id = :roomId "+
+        "and r.reservationToken = :reservationToken")
+    Optional<Reservation> findByRoomAndToken(
+            @Param("roomId") Long roomId,
+            @Param("reservationToken") String reservationToken);
 }
