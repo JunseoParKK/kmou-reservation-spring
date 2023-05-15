@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -135,5 +136,20 @@ public class ReservationServiceImpl implements ReservationService{
                     throw new ApiException(ErrorCode.NOT_FOUND_ENTITY);
                 });
         return ReservationDetails.mapToDto(reservation);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<ReservationDetails> getByRoomId(Long roomId) {
+        Room room = roomRepository.findById(roomId)
+                .orElseThrow(()->{
+                    log.error("room 대상이 없습니다. roomId: {}",roomId);
+                    throw new ApiException(ErrorCode.NOT_FOUND_ENTITY);
+                });
+        List<ReservationDetails> collect = reservationRepository.findByRoomId(room.getId()).stream()
+                .map(ReservationDetails::mapToDto)
+                .collect(Collectors.toList());
+        log.info("collect: {}",collect);
+        return collect;
     }
 }
