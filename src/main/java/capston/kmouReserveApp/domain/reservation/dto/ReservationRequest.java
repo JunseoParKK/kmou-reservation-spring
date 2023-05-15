@@ -57,5 +57,16 @@ public class ReservationRequest {
            this.purpose = purpose;
            this.memberNUm = memberNUm;
        }
+
+       public Reservation mapToEntity(ValidateFindByIdDto validateFindByIdDto){
+           return Reservation.builder()
+                   .startTime(TimeParsingUtils.formatterLocalDateTime(startTime))
+                   .endTime(TimeParsingUtils.formatterLocalDateTime(endTime))
+                   .user(validateFindByIdDto.getUser())
+                   .room(validateFindByIdDto.getRoom())
+                   .purpose(validateFindByIdDto.getReservation().getPurpose())
+                   .memberNum(validateFindByIdDto.getReservation().getMemberNum())
+                   .build();
+       }
    }
 }
