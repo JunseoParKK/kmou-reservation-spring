@@ -75,4 +75,18 @@ public class ReservationController {
         log.info("reservation register, uuid: {}",uuid);
         return ResponseEntity.ok(reservationService.getAllByUserUuid(uuid));
     }
+
+    /*
+     * 예약 수정
+     */
+    @PutMapping("/room/{roomId}/reservation/{reservationToken}")
+    public String updateReservation(
+            @PathVariable("roomId") Long roomId,
+            @PathVariable("reservationToken") String reservationToken,
+            @RequestBody ReservationRequest.updateReservation updateReservation
+    ){
+        String uuid = updateReservation.getUserUuid();
+        log.info("reservation updateByUuid, roomId: {}, reservationToken: {}",roomId,reservationToken);
+        return reservationService.updateByToken(roomId,reservationToken,updateReservation);
+    }
 }
