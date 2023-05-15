@@ -15,4 +15,6 @@ public interface ReservationService {
     List<ReservationDetails> getAllByUserUuid(String uuid);
 
     String updateByToken(Long roomId, String reservationToken, ReservationRequest.UpdateReservation updateReservation);
+
+    void deleteByToken(String uuid, String reservationToken);
 }

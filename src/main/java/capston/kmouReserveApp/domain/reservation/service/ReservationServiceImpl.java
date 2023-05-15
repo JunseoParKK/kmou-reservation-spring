@@ -185,4 +185,21 @@ public class ReservationServiceImpl implements ReservationService{
         validateDiffTime(updateReservation.getStartTime(),updateReservation.getEndTime());
         validateFindById(updateReservation.getUuid(),roomId);
     }
+
+    @Transactional
+    @Override
+    public void deleteByToken(String uuid, String reservationToken) {
+        userRepository.findByUuid(uuid)
+                .orElseThrow(()->{
+                    log.error("user 대상이 없습니다. uuid: {}",uuid);
+                    throw new ApiException(ErrorCode.NOT_FOUND_USER);
+                });
+
+        // 해당 등록자인지 체크
+        reservationRepository.findByTokenLock(reservationToken)
+                .ifPresent(reservation -> {
+                    log.info("해당 reservation register: {}",reservation.getUser().getUuid());
+                    reservationRepository.deleteById(reservation.getId());
+                });
+    }
 }
