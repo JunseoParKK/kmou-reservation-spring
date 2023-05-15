@@ -22,6 +22,6 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
                                           @Param("eTime") LocalDateTime eTime);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Query("select r from Reservation r where r.reservationToken =: reservationToken")
-    Optional<Reservation> findByTokenLock(@Param("reservationToken") String reservationToken);
+    @Query("select r from Reservation r where r.reservationToken = :rToken")
+    Optional<Reservation> findByTokenLock(@Param("rToken") String rToken);
 }
