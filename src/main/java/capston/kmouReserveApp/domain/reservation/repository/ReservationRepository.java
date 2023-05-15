@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.LockModeType;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,4 +31,8 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
     Optional<Reservation> findByRoomAndToken(
             @Param("roomId") Long roomId,
             @Param("reservationToken") String reservationToken);
+
+    @Query("select r from Reservation r left join fetch r.room where r.room.id = :roomId")
+    List<Reservation> findByRoomId(
+            @Param("roomId") Long roomId);
 }
