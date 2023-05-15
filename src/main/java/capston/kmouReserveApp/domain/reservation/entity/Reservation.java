@@ -1,7 +1,9 @@
 package capston.kmouReserveApp.domain.reservation.entity;
 
+import antlr.Token;
 import capston.kmouReserveApp.domain.BaseTimeEntity;
 import capston.kmouReserveApp.domain.user.entity.User;
+import capston.kmouReserveApp.utils.TokenGenerator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -48,8 +50,8 @@ public class Reservation extends BaseTimeEntity {
     private int memberNum;
 
     @Builder
-    public Reservation(String reservationToken, LocalDateTime startTime, LocalDateTime endTime, User user, Room room, String purpose, int memberNum) {
-        this.reservationToken = reservationToken;
+    public Reservation(LocalDateTime startTime, LocalDateTime endTime, User user, Room room, String purpose, int memberNum) {
+        this.reservationToken = TokenGenerator.randomCharacterWithPrefix(RESERVATION_PREFIX);
         this.startTime = startTime;
         this.endTime = endTime;
         this.user = user;
