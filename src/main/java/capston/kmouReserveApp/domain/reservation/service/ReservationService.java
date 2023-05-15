@@ -5,4 +5,6 @@ import capston.kmouReserveApp.domain.reservation.dto.ReservationRequest;
 
 public interface ReservationService {
     ReservationDetails register(Long roomId, ReservationRequest.RegisterReservation registerReservation);
+
+    ReservationDetails getByRoomAndReservationToken(Long roomId, String reservationToken);
 }

@@ -125,4 +125,14 @@ public class ReservationServiceImpl implements ReservationService{
                 .room(room)
                 .build();
     }
+
+    @Override
+    public ReservationDetails getByRoomAndReservationToken(Long roomId, String reservationToken) {
+        Reservation reservation = reservationRepository.findByRoomAndToken(roomId,reservationToken)
+                .orElseThrow(()->{
+                    log.error("reservation 대상이 없습니다. roomId: {}, reservationToken: {}",roomId,reservationToken);
+                    throw new ApiException(ErrorCode.NOT_FOUND_ENTITY);
+                });
+        return ReservationDetails.mapToDto(reservation);
+    }
 }
