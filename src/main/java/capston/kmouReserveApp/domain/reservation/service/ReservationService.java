@@ -11,4 +11,6 @@ public interface ReservationService {
     ReservationDetails getByRoomAndReservationToken(Long roomId, String reservationToken);
 
     List<ReservationDetails> getByRoomId(Long roomId);
+
+    List<ReservationDetails> getAllByUserUuid(String uuid);
 }

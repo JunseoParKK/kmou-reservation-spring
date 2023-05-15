@@ -152,4 +152,17 @@ public class ReservationServiceImpl implements ReservationService{
         log.info("collect: {}",collect);
         return collect;
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<ReservationDetails> getAllByUserUuid(String uuid) {
+        User user = userRepository.findByUuid(uuid)
+                .orElseThrow(()->{
+                    log.error("user 대상이 없습니다. uuid: {}",uuid);
+                    throw new ApiException(ErrorCode.NOT_FOUND_USER);
+                });
+        return reservationRepository.findByUserIds(user.getId()).stream()
+                .map(ReservationDetails::mapToDto)
+                .collect(Collectors.toList());
+    }
 }
