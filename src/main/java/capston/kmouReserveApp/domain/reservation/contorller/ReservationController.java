@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Log4j2
 @RestController
 @RequiredArgsConstructor
@@ -48,5 +50,16 @@ public class ReservationController {
     ){
         log.info("reservation getById, roomId: {}, reservationToken: {}",roomId,reservationToken);
         return ResponseEntity.ok(reservationService.getByRoomAndReservationToken(roomId,reservationToken));
+    }
+
+    /*
+     * 해당 룸 예약 조회
+     */
+    @GetMapping("/room/{roomId}/reservation")
+    public ResponseEntity<List<ReservationDetails>>getByRoomId(
+            @PathVariable("roomId") Long roomid
+    ){
+        log.info("reservation getByRoomId, roomId: {}",roomid);
+        return ResponseEntity.ok(reservationService.getByRoomId(roomid));
     }
 }
