@@ -4,6 +4,7 @@ import capston.kmouReserveApp.auth.AuthUser;
 import capston.kmouReserveApp.domain.reservation.dto.ReservationDetails;
 import capston.kmouReserveApp.domain.reservation.dto.ReservationRequest;
 import capston.kmouReserveApp.domain.reservation.service.ReservationService;
+import capston.kmouReserveApp.domain.user.dto.UserRequest;
 import capston.kmouReserveApp.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -61,5 +62,17 @@ public class ReservationController {
     ){
         log.info("reservation getByRoomId, roomId: {}",roomid);
         return ResponseEntity.ok(reservationService.getByRoomId(roomid));
+    }
+
+    /*
+     * 해당 유저 예약 조회
+     */
+    @GetMapping("/reservation")
+    public ResponseEntity<List<ReservationDetails>>getAllByUserUuid(
+            @RequestBody UserRequest.UuidRequest userUuidRequest
+            )throws Exception{
+        String uuid = userUuidRequest.getUuid();
+        log.info("reservation register, uuid: {}",uuid);
+        return ResponseEntity.ok(reservationService.getAllByUserUuid(uuid));
     }
 }
