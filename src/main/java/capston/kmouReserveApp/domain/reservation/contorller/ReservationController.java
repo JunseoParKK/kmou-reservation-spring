@@ -36,7 +36,7 @@ public class ReservationController {
         registerReservation.setUuid(uuid);
 
         return new ResponseEntity<>(reservationService.register(
-                uuid,roomId,registerReservation), HttpStatus.CREATED
+                roomId,registerReservation), HttpStatus.CREATED
         );
     }
 }
