@@ -1,4 +1,4 @@
-package capston.kmouReserveApp.domain.reservation.reservation;
+package capston.kmouReserveApp.domain.reservation.repository;
 
 import capston.kmouReserveApp.domain.reservation.entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
