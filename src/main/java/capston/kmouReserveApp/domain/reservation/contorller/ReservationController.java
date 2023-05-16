@@ -58,10 +58,10 @@ public class ReservationController {
      */
     @GetMapping("/room/{roomId}/reservation")
     public ResponseEntity<List<ReservationDetails>>getByRoomId(
-            @PathVariable("roomId") Long roomid
+            @PathVariable("roomId") Long roomId
     ){
-        log.info("reservation getByRoomId, roomId: {}",roomid);
-        return ResponseEntity.ok(reservationService.getByRoomId(roomid));
+        log.info("reservation getByRoomId, roomId: {}",roomId);
+        return ResponseEntity.ok(reservationService.getByRoomId(roomId));
     }
 
     /*

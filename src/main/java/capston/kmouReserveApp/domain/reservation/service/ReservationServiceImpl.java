@@ -106,6 +106,12 @@ public class ReservationServiceImpl implements ReservationService{
         if(diffTime < 1 || diffTime > 2){
             throw new ApiException(ErrorCode.INVALID_REQUEST,"예약 시간은 최소 1시간 이상, 2시간을 넘길 수 없습니다.");
         }
+
+        // 현재 시간보다 이전의 예약이면 예약 불가
+        Date now=new Date();
+        if(!stateDate.after(now)){
+            throw new ApiException(ErrorCode.INVALID_REQUEST,"현재 날짜와 시간 이후로 예약 가능합니다.");
+        }
     }
 
     private ValidateFindByIdDto validateFindById(String uuid,Long roomId){
