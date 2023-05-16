@@ -20,19 +20,19 @@
 
 ## 🖋️ 사용 기술 스택
 ➡️ Front-end
-- Dart
-- Flutter
-- Firebase
-- Android Studio
-- Visual Studio Code
+- Dart SDK 2.19.6
+- Flutter 3.7.12
+- FireBase 
+- Android Studio 11.0.15
+- Visual Studio Code 1.78.2
 
 <br>
 
 ⬅️ Back-end
 - Java11
-- IntelliJ
-- SpringBoot
-- Gradle
-- MySQL
+- IntelliJ 17.0.5
+- SpringBoot 2.7.11
+- Gradle 7.6.1
+- MySQL 8.0.32
 - JPA / QueryDsl
 - JUnit5  
