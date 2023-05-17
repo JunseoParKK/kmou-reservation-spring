@@ -127,7 +127,9 @@ application.yml
 ## 📰 API Document
 
 - / users / signsup POST : 회원 가입 <br>
-- / users GET : 사용자 정보 조회 <br><br>
+- / users GET : 회원 정보 조회 <br>
+- / users PUT : 회원 정보 수정 <br>
+- / users DELETE : 회원 탈퇴 <br><br>
 
 - / room / {roomId} / reservation GET : 해당 룸 예약 조회 <br>
 - / room / {roomId} / reservation POST : 예약 등록 <br>
