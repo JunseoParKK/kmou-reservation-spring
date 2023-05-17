@@ -147,6 +147,6 @@ application.yml
 
 ## 🎨 ER Diagram
 
-<img width="1089" alt="today-my-school ERD" src="https://github.com/JunseoParKK/today-my-school-final/assets/98972385/694da1e9-70f3-450b-b48d-4af87b7ef79a">
+<img width="1092" alt="today-my-school ERD" src="https://github.com/JunseoParKK/today-my-school-final/assets/98972385/20cb1f47-135c-4503-8120-d4ccb02c8aca">
 
 
