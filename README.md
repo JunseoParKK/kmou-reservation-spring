@@ -116,5 +116,25 @@ application.yml
        - service <br>
            &nbsp;&nbsp; XxxService.java <br>
            &nbsp;&nbsp; XxxServiceImpl.java
+     - BaseTimeEntity.java
    - exception
    - utils
+
+<br>
+
+<!--API 명세서-->
+
+## 📰 API Document
+
+- / users / signsup POST : 회원 가입 <br>
+- / users GET : 사용자 정보 조회 <br><br>
+
+- / room / {roomId} / reservation GET : 해당 룸 예약 조회 <br>
+- / room / {roomId} / reservation POST : 예약 등록 <br>
+- / room / {roomId} / reservation / {reservationToken} GET : 등록한 예약 상세 보기 <br>
+- / room / {roomId} / reservation / {reservationToken} PUT : 예약 수정 <br>
+- / room / {roomId} / reservation / {reservationToken} DELETE : 예약 삭제 <br><br>
+
+- / reservation GET : 해당 유저 예약 조회
+
+
