@@ -139,4 +139,10 @@ application.yml
 
 - / reservation GET : 해당 유저 예약 조회
 
+<br>
 
+<!--ERD-->
+
+## 🎨 ER Diagram
+
+<img width="1089" alt="today-my-school ERD" src="https://github.com/JunseoParKK/today-my-school-final/assets/98972385/694da1e9-70f3-450b-b48d-4af87b7ef79a">
