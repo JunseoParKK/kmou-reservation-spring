@@ -8,6 +8,7 @@
 <br><br>
 
 <!--서비스 소개-->
+
 ## 🌱 서비스 목록 (Service List)
 
 **1. 학교 이메일로 회원가입 및 로그인** 
@@ -29,14 +30,11 @@
 - Dart SDK 2.19.6
 - Flutter 3.7.12
 - FireBase 
-- Android Studio 11.0.15
-- Visual Studio Code 1.78.2
 
 <br>
 
 ⬅️ Back-end
 - Java11
-- IntelliJ 17.0.5
 - SpringBoot 2.7.11
 - Gradle 7.6.1
 - MySQL 8.0.32
@@ -45,7 +43,14 @@
 
 <br>
 
-🧑‍🤝‍🧑 이외 툴
+🛠️ Tools
+- Android Studio
+- VSC
+- IntelliJ
+
+<br>
+
+🧑‍🤝‍🧑 Cooperation
 - github
 - Notion
 - Figma
@@ -56,8 +61,60 @@
 
 ## 🪧 프로젝트 목표
 
-**1. 학교 생활에서 `불편함`을 줄일 수 있도록 고민하고 해결하기 위해 노력합니다.**
-- 실제로 우리 주변에서 겪을 수 있는 문제점을 찾고, 이를 개선하기 위해 그동안 배운 지식들을 적용하여 해결합니다.
-- 수기로 관리되던 시설물 예약 시스템을 android, ios 앱으로 만들어 편의를 제공합니다.
+**1. 학교 생활에서 `불편함` 을 줄일 수 있도록 고민하고 해결하기 위해 노력합니다.**
+- 실제로 우리 주변에서 겪을 수 있는 문제점을 찾고, 자기주도적 학습을 통해 필요한 기술을 익혀 문제를 해결하도록 노력합니다.
+- 수기로 관리되던 시설물 예약 시스템을 android, ios 앱으로 만들어 학생들에게 도움이 되도록 노력합니다.
 
-**2. 
+**2. `객체 지향 원리`  를 적용하여 애플리케이션의 유지보수, 확장이 용이하도록 구현합니다.**
+- SOLID 원칙과 Controller-Service-Repository 구조를 적용하여 `도메인 주도 설계` 를 하기 위해 노력합니다.
+- 객체 지향의 원리를 이해하고, 중복되거나 불필요한 코드를 줄여 `CleanCode` 를 작성하기 위해 노력합니다.
+
+**3. `문서화` 를 통해 협업하는 방법을 배웁니다.**
+- Github, Notion 등을 활용하여 프로젝트를 진행하는 과정을 문서화, 팀원들간 공유하며 협업하는 방법을 배웁니다.
+- 프로젝트에 필요한 기술을 각자 공부하고 스터디, 회의를 통해 공유하여 팀원간 win-win 이 되도록 노력합니다.
+
+<br>
+
+<!--패키지 구조, 네이밍 컨벤션-->
+
+## 📁 패키지 구조, 네이밍 컨벤션
+
+java > resources >
+
+application.yml
+
+ - java > capston > kmouReserveApp
+   - auth
+   - domain
+     - reservation
+       - controller <br>
+           &nbsp;&nbsp; XxxController.java
+       - dto <br>
+           &nbsp;&nbsp; XxxDetails.java <br>
+           &nbsp;&nbsp; XxxRequest.java <br>
+           &nbsp;&nbsp; XxxDto.java <br>
+       - entity <br>
+           &nbsp;&nbsp; Xxx.java
+       - repository <br>
+           &nbsp;&nbsp; XxxRepository.java
+       - service <br>
+           &nbsp;&nbsp; XxxService.java <br>
+           &nbsp;&nbsp; XxxServiceImpl.java
+     - user
+       - controller <br>
+           &nbsp;&nbsp; XxxController.java
+       - dto <br>
+           &nbsp;&nbsp; XxxRequest.java <br>
+           &nbsp;&nbsp; XxxResponse.java <br>
+           &nbsp;&nbsp; XxxInfo.java <br>
+       - entity <br>
+           &nbsp;&nbsp; Xxx.java
+       - mapper <br>
+           &nbsp;&nbsp; XxxMapper.java
+       - repository <br>
+           &nbsp;&nbsp; XxxRepository.java
+       - service <br>
+           &nbsp;&nbsp; XxxService.java <br>
+           &nbsp;&nbsp; XxxServiceImpl.java
+   - exception
+   - utils
