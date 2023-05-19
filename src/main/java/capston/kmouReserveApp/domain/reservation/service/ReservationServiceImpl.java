@@ -103,8 +103,9 @@ public class ReservationServiceImpl implements ReservationService{
         }
         long diffTime = (endDate.getTime() - stateDate.getTime())/3600000;
 
-        if(diffTime < 1 || diffTime > 2){
-            throw new ApiException(ErrorCode.INVALID_REQUEST,"예약 시간은 최소 1시간 이상, 2시간을 넘길 수 없습니다.");
+        //if(diffTime < 1 || diffTime > 2)
+        if(diffTime != 1){
+            throw new ApiException(ErrorCode.INVALID_REQUEST,"예약 시간 1시간 단위만 가능합니다.");
         }
 
         // 현재 시간보다 이전의 예약이면 예약 불가
