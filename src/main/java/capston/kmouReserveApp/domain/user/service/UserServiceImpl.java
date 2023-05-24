@@ -2,6 +2,7 @@ package capston.kmouReserveApp.domain.user.service;
 
 import capston.kmouReserveApp.domain.user.dto.SignUpRequest;
 import capston.kmouReserveApp.domain.user.dto.UserInfo;
+import capston.kmouReserveApp.domain.user.dto.UserRequest;
 import capston.kmouReserveApp.domain.user.entity.User;
 import capston.kmouReserveApp.domain.user.mapper.UserMapper;
 import capston.kmouReserveApp.domain.user.repository.UserRepository;
@@ -47,5 +48,15 @@ public class UserServiceImpl implements UserService{
         log.info("getByUuid findUser: {}",findUser);
 
         return userMapper.mapToDto(findUser);
+    }
+
+    @Override
+    @Transactional
+    public void updateUser(UserRequest.UpdateRequest updateRequest) {
+        userRepository.update(
+                updateRequest.getUuid(),
+                updateRequest.getName(),
+                updateRequest.getEmail(),
+                updateRequest.getPhoneNum());
     }
 }

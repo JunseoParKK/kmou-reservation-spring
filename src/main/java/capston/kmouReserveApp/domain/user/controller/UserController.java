@@ -44,4 +44,12 @@ public class UserController {
 
         return new ResponseEntity<>(userInfo,HttpStatus.OK);
     }
+
+    @PutMapping("/update")
+    public void updateUser(
+        @RequestBody UserRequest.UpdateRequest updateRequest
+    ){
+        String uuid = updateRequest.getUuid();
+        userService.updateUser(updateRequest);
+    }
 }
