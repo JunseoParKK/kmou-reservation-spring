@@ -128,7 +128,7 @@ application.yml
 
 - / users / signsup POST : 회원 가입 <br>
 - / users GET : 회원 정보 조회 <br>
-- / users PUT : 회원 정보 수정 <br>
+- / users / update PUT : 회원 정보 수정 <br>
 - / users DELETE : 회원 탈퇴 <br><br>
 
 - / room / {roomId} / reservation GET : 해당 룸 예약 조회 <br>
