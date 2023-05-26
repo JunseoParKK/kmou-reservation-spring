@@ -1,6 +1,7 @@
 package capston.kmouReserveApp.domain.reservation.contorller;
 
 import capston.kmouReserveApp.auth.AuthUser;
+import capston.kmouReserveApp.domain.reservation.dto.ReservationCheck;
 import capston.kmouReserveApp.domain.reservation.dto.ReservationDetails;
 import capston.kmouReserveApp.domain.reservation.dto.ReservationRequest;
 import capston.kmouReserveApp.domain.reservation.service.ReservationService;
@@ -103,5 +104,14 @@ public class ReservationController {
 
         reservationService.deleteByToken(uuid,reservationToken);
         return new ResponseEntity<>("a reservation successfully deleted!",HttpStatus.OK);
+    }
+
+    @GetMapping("/room/{roomId}/date")
+    public ResponseEntity<List<ReservationCheck.ReservationCheckResponse>>getByRoomAndDate(
+            @PathVariable("roomId") Long roomId,
+            @RequestBody ReservationCheck.ReservationCheckRequest reservationCheckRequest
+    ){
+        String date = reservationCheckRequest.getDate();
+        return ResponseEntity.ok(reservationService.getByRoomAndDate(roomId,date));
     }
 }

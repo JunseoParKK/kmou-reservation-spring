@@ -1,5 +1,6 @@
 package capston.kmouReserveApp.domain.reservation.service;
 
+import capston.kmouReserveApp.domain.reservation.dto.ReservationCheck;
 import capston.kmouReserveApp.domain.reservation.dto.ReservationDetails;
 import capston.kmouReserveApp.domain.reservation.dto.ReservationRequest;
 import capston.kmouReserveApp.domain.reservation.dto.ValidateFindByIdDto;
@@ -208,5 +209,10 @@ public class ReservationServiceImpl implements ReservationService{
                     log.info("해당 reservation register: {}",reservation.getUser().getUuid());
                     reservationRepository.deleteById(reservation.getId());
                 });
+    }
+
+    @Override
+    public List<ReservationCheck.ReservationCheckResponse> getByRoomAndDate(Long roomId, String date) {
+        return null;
     }
 }
