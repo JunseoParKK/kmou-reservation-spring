@@ -111,7 +111,7 @@ public class ReservationController {
             @PathVariable("roomId") Long roomId,
             @RequestBody ReservationCheck.ReservationCheckRequest reservationCheckRequest
     ){
-        String date = reservationCheckRequest.getDate();
-        return ResponseEntity.ok(reservationService.getByRoomAndDate(roomId,date));
+        String dateFormat = reservationCheckRequest.getDate();
+        return ResponseEntity.ok(reservationService.getByRoomAndDate(roomId,dateFormat));
     }
 }

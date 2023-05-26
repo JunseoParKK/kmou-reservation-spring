@@ -214,7 +214,69 @@ public class ReservationServiceImpl implements ReservationService{
 
     @Transactional
     @Override
-    public List<ReservationCheck.ReservationCheckResponse> getByRoomAndDate(Long roomId, String date) {
-        return new ArrayList<>();
+    public List<ReservationCheck.ReservationCheckResponse> getByRoomAndDate(Long roomId, String dateFormat) {
+        List<ReservationCheck.ReservationCheckResponse> result;
+        List<Reservation> list;
+        Date date;
+
+        try{
+            date = TimeParsingUtils.formatterDate(dateFormat);
+        }catch (ParseException e) {
+            throw new ApiException(ErrorCode.INVALID_REQUEST);
+        }
+        list = reservationRepository.findByDate(roomId,date).stream()
+                .collect(Collectors.toList());
+
+        result = makeList(list);
+
+        log.info("sizeOfResult: {}",list.size());
+        for(int i=0;i<result.size();i++)
+            log.info("time: {}, isAble: {}",result.get(i).getIndex(),result.get(i).isPossible());
+
+        return result;
+    }
+
+    private static List<ReservationCheck.ReservationCheckResponse> makeList(List<Reservation>list){
+        List<ReservationCheck.ReservationCheckResponse> reservList = new ArrayList<>();
+        for(int i=0;i<9;i++)
+            reservList.add(new ReservationCheck.ReservationCheckResponse(i,true));
+
+        for(int j=0;j<list.size();j++){
+            String sTime = TimeParsingUtils.formatterString(list.get(j).getStartTime())
+                    .substring(11);
+
+            log.info("startTime: {}",sTime);
+
+            switch (sTime){
+                case "09:00:00":
+                    reservList.get(0).setPossible(false);
+                    break;
+                case "10:00:00":
+                    reservList.get(1).setPossible(false);
+                    break;
+                case "11:00:00":
+                    reservList.get(2).setPossible(false);
+                    break;
+                case "12:00:00":
+                    reservList.get(3).setPossible(false);
+                    break;
+                case "13:00:00":
+                    reservList.get(4).setPossible(false);
+                    break;
+                case "14:00:00":
+                    reservList.get(5).setPossible(false);
+                    break;
+                case "15:00:00":
+                    reservList.get(6).setPossible(false);
+                    break;
+                case "16:00:00":
+                    reservList.get(7).setPossible(false);
+                    break;
+                case "17:00:00":
+                    reservList.get(8).setPossible(false);
+                    break;
+            }
+        }
+        return reservList;
     }
 }
