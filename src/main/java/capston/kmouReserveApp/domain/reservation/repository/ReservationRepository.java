@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.LockModeType;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,4 +40,9 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
     @Query("select r from Reservation r left join fetch r.user where r.user.id = :userIds")
     List<Reservation> findByUserIds(
             @Param("userIds") Long userIds);
+
+    @Query("select r from Reservation r where DATE(r.startTime) = :dateFormat and r.room.id = :roomId")
+    List<Reservation> findByDate(
+            @Param("roomId") Long roomId,
+            @Param("dateFormat") Date dateFormat);
 }
