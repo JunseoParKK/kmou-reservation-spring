@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -211,8 +212,9 @@ public class ReservationServiceImpl implements ReservationService{
                 });
     }
 
+    @Transactional
     @Override
     public List<ReservationCheck.ReservationCheckResponse> getByRoomAndDate(Long roomId, String date) {
-        return null;
+        return new ArrayList<>();
     }
 }
