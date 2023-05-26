@@ -68,11 +68,11 @@ public class ReservationController {
     /*
      * 해당 유저 예약 조회
      */
-    @GetMapping("/reservation")
+    @GetMapping("/reservation/{uid}")
     public ResponseEntity<List<ReservationDetails>>getAllByUserUuid(
-            @RequestBody UserRequest.UuidRequest userUuidRequest
+            @PathVariable("uid") String uid
             )throws Exception{
-        String uuid = userUuidRequest.getUuid();
+        String uuid = uid;
         log.info("reservation register, uuid: {}",uuid);
         return ResponseEntity.ok(reservationService.getAllByUserUuid(uuid));
     }
