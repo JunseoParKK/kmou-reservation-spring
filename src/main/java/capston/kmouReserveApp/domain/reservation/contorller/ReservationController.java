@@ -106,12 +106,15 @@ public class ReservationController {
         return new ResponseEntity<>("a reservation successfully deleted!",HttpStatus.OK);
     }
 
-    @GetMapping("/room/{roomId}/date")
+    /*
+     * 특정 날짜, 특정 룸 시간대별 예약 현황 확인
+     */
+    @GetMapping("/room/{roomId}/date/{checkDate}")
     public ResponseEntity<List<ReservationCheck.ReservationCheckResponse>>getByRoomAndDate(
             @PathVariable("roomId") Long roomId,
-            @RequestBody ReservationCheck.ReservationCheckRequest reservationCheckRequest
+            @PathVariable("checkDate") String checkDate
     ){
-        String dateFormat = reservationCheckRequest.getDate();
+        String dateFormat = checkDate;
         return ResponseEntity.ok(reservationService.getByRoomAndDate(roomId,dateFormat));
     }
 }
