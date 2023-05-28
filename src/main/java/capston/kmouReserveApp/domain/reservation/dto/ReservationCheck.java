@@ -21,13 +21,13 @@ public class ReservationCheck {
     @NoArgsConstructor
     @ToString
     public static class ReservationCheckResponse{
-        private int index;
-        private boolean isPossible = true;
+        private String time;
+        private boolean isReserved = false;
 
         @Builder
-        public ReservationCheckResponse(int index, boolean isPossible) {
-            this.index = index;
-            this.isPossible = isPossible;
+        public ReservationCheckResponse(String time, boolean isReserved) {
+            this.time = time;
+            this.isReserved = isReserved;
         }
     }
 }

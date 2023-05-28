@@ -229,17 +229,30 @@ public class ReservationServiceImpl implements ReservationService{
 
         result = makeList(list);
 
-        log.info("sizeOfResult: {}",list.size());
         for(int i=0;i<result.size();i++)
-            log.info("time: {}, isAble: {}",result.get(i).getIndex(),result.get(i).isPossible());
+            log.info("time: {}, isReserved: {}",result.get(i).getTime(),result.get(i).isReserved());
 
         return result;
     }
 
     private static List<ReservationCheck.ReservationCheckResponse> makeList(List<Reservation>list){
         List<ReservationCheck.ReservationCheckResponse> reservList = new ArrayList<>();
-        for(int i=0;i<9;i++)
-            reservList.add(new ReservationCheck.ReservationCheckResponse(i,true));
+        int firstTime = 9;
+        StringBuilder first = new StringBuilder();
+
+        for(int i=0;i<9;i++) {
+            if (firstTime == 9)
+                first.append("09:00-10:00");
+            else{
+                first.append(String.valueOf(firstTime));
+                first.append(":00-");
+                first.append(String.valueOf(firstTime+1));
+                first.append(":00");
+            }
+            reservList.add(new ReservationCheck.ReservationCheckResponse(first.toString(), false));
+            first.setLength(0);
+            firstTime++;
+        }
 
         for(int j=0;j<list.size();j++){
             String sTime = TimeParsingUtils.formatterString(list.get(j).getStartTime())
@@ -249,31 +262,31 @@ public class ReservationServiceImpl implements ReservationService{
 
             switch (sTime){
                 case "09:00:00":
-                    reservList.get(0).setPossible(false);
+                    reservList.get(0).setReserved(true);
                     break;
                 case "10:00:00":
-                    reservList.get(1).setPossible(false);
+                    reservList.get(1).setReserved(true);
                     break;
                 case "11:00:00":
-                    reservList.get(2).setPossible(false);
+                    reservList.get(2).setReserved(true);
                     break;
                 case "12:00:00":
-                    reservList.get(3).setPossible(false);
+                    reservList.get(3).setReserved(true);
                     break;
                 case "13:00:00":
-                    reservList.get(4).setPossible(false);
+                    reservList.get(4).setReserved(true);
                     break;
                 case "14:00:00":
-                    reservList.get(5).setPossible(false);
+                    reservList.get(5).setReserved(true);
                     break;
                 case "15:00:00":
-                    reservList.get(6).setPossible(false);
+                    reservList.get(6).setReserved(true);
                     break;
                 case "16:00:00":
-                    reservList.get(7).setPossible(false);
+                    reservList.get(7).setReserved(true);
                     break;
                 case "17:00:00":
-                    reservList.get(8).setPossible(false);
+                    reservList.get(8).setReserved(true);
                     break;
             }
         }
