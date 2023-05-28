@@ -135,9 +135,10 @@ application.yml
 - / room / {roomId} / reservation POST : 예약 등록 <br>
 - / room / {roomId} / reservation / {reservationToken} GET : 등록한 예약 상세 보기 <br>
 - / room / {roomId} / reservation / {reservationToken} PUT : 예약 수정 <br>
-- / room / {roomId} / reservation / {reservationToken} DELETE : 예약 삭제 <br><br>
+- / room / {roomId} / reservation / {reservationToken} DELETE : 예약 삭제 <br>
+- / room / {roomId} / date / {checkDate} GET : 특정 날짜, 룸 시간대별 예약 확인 <br><br>
 
-- / reservation GET : 해당 유저 예약 조회 <br><br>
+- / reservation / {uid} GET : 해당 유저 예약 조회 <br><br>
 
 ⏰ 이외의 기능은 모두 Flutter, Firebase 에서 제공하는 서비스를 이용하여 비교적 적은 수의 API 개발할 수 있었습니다.
 
