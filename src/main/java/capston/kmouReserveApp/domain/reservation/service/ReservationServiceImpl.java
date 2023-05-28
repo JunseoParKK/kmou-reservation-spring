@@ -106,7 +106,7 @@ public class ReservationServiceImpl implements ReservationService{
         long diffTime = (endDate.getTime() - stateDate.getTime())/3600000;
 
         //if(diffTime < 1 || diffTime > 2)
-        if(diffTime != 1){
+        if(diffTime < 1 || diffTime > 2 ){
             throw new ApiException(ErrorCode.INVALID_REQUEST,"예약 시간 1시간 단위만 가능합니다.");
         }
 
