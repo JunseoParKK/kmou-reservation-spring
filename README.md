@@ -43,10 +43,12 @@
 
 <br>
 
-🛠️ Tools
+🛠️ IDE, Tools
 - Android Studio
 - VSC
 - IntelliJ
+- Postman
+- Sourcetree
 
 <br>
 
