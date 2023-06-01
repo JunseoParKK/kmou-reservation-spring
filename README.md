@@ -154,9 +154,18 @@ application.yml
 
 <br>
 
+<!--User Flow-->
+
+## 유저 플로우
+
+
+![KakaoTalk_Photo_2023-04-10-01-06-56-1](https://github.com/JunseoParKK/today-my-school-back/assets/98972385/697a32e2-948c-437c-bb24-e1f74a76370a)
+
+<br>
+
 <!--Screen-->
 
-## 실행 
+## 실행 화면
 
 ![image](https://github.com/JunseoParKK/today-my-school-back/assets/98972385/432b8739-6503-477d-939c-b389ccc521fb)
 
