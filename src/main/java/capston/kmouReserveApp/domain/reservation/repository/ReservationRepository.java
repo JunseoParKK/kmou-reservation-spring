@@ -23,6 +23,15 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
                                           @Param("sTime") LocalDateTime sTime,
                                           @Param("eTime") LocalDateTime eTime);
 
+    @Query("select r from Reservation r where DATE(r.startTime) = :dateFormat and r.room.id = :roomId")
+    List<Reservation> findByDate(
+            @Param("roomId") Long roomId,
+            @Param("dateFormat") Date dateFormat);
+
+    @Query("select r from Reservation r left join fetch r.user where r.user.id = :userIds")
+    List<Reservation> findByUserIds(
+            @Param("userIds") Long userIds);
+
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select r from Reservation r where r.reservationToken = :rToken")
     Optional<Reservation> findByTokenLock(@Param("rToken") String rToken);
@@ -37,12 +46,5 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long> {
     List<Reservation> findByRoomId(
             @Param("roomId") Long roomId);
 
-    @Query("select r from Reservation r left join fetch r.user where r.user.id = :userIds")
-    List<Reservation> findByUserIds(
-            @Param("userIds") Long userIds);
 
-    @Query("select r from Reservation r where DATE(r.startTime) = :dateFormat and r.room.id = :roomId")
-    List<Reservation> findByDate(
-            @Param("roomId") Long roomId,
-            @Param("dateFormat") Date dateFormat);
 }
