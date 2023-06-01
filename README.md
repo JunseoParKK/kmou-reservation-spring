@@ -152,3 +152,12 @@ application.yml
 
 총 3개의 테이블로 구성되어있습니다.
 
+<br>
+
+<!--Screen-->
+
+## 실행 
+
+![image](https://github.com/JunseoParKK/today-my-school-back/assets/98972385/432b8739-6503-477d-939c-b389ccc521fb)
+
+
