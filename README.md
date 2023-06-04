@@ -169,4 +169,12 @@ application.yml
 
 ![image](https://github.com/JunseoParKK/today-my-school-back/assets/98972385/432b8739-6503-477d-939c-b389ccc521fb)
 
+<!--개선할 점-->
 
+<br>
+
+## 개선할 점
+1. 동시성 문제 해결
+2. AWS 등을 활용한 배포
+3. Spring Security를 활용한 보안 문제 개선
+4. 편의를 위한 여러 기능 추가
