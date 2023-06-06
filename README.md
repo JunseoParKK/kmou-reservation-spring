@@ -154,3 +154,29 @@ application.yml
 
 총 3개의 테이블로 구성되어있습니다.
 
+<br>
+
+<!--User Flow-->
+
+## User Flow(유저 플로우)
+
+
+![KakaoTalk_Photo_2023-04-10-01-06-56-1](https://github.com/JunseoParKK/today-my-school-back/assets/98972385/697a32e2-948c-437c-bb24-e1f74a76370a)
+
+<br>
+
+<!--Screen-->
+
+## Run App(실행 화면)
+
+![image](https://github.com/JunseoParKK/today-my-school-back/assets/98972385/432b8739-6503-477d-939c-b389ccc521fb)
+
+<!--개선할 점-->
+
+<br>
+
+## 개선할 점
+1. 동시성 문제 해결
+2. AWS 등을 활용한 배포
+3. Spring Security를 활용한 보안 문제 개선
+4. 편의를 위한 여러 기능 추가
