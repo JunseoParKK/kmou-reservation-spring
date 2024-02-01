@@ -29,7 +29,6 @@
 ➡️ Front-end
 - Dart SDK 2.19.6
 - Flutter 3.7.12
-- FireBase 
 
 <br>
 
@@ -38,8 +37,8 @@
 - SpringBoot 2.7.11
 - Gradle 7.6.1
 - MySQL 8.0.32
-- JPA / QueryDsl
-- JUnit5
+- JPA / JPQL
+- FireBase
 
 <br>
 
