@@ -1,6 +1,5 @@
-package capston.kmouReserveApp.domain.reservation.contorller;
+package capston.kmouReserveApp.domain.reservation.controller;
 
-import capston.kmouReserveApp.auth.AuthUser;
 import capston.kmouReserveApp.domain.reservation.dto.ReservationCheck;
 import capston.kmouReserveApp.domain.reservation.dto.ReservationDetails;
 import capston.kmouReserveApp.domain.reservation.dto.ReservationRequest;
