@@ -38,3 +38,6 @@ settings.gradle
 
 ### VS Code ###
 .vscode/
+
+### yaml ###
+application.yaml
